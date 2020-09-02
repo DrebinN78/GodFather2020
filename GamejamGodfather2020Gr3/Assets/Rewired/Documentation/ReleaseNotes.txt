@@ -1,12 +1,3 @@
-1.1.36.0:
-
-    Changes:
-      - Added support Unity 2020 support.
-      - Added UWP ARM64 native library (Unity 2019+, untested).
-      - Removed GUILayer on cameras in examples to stop errors reported in Unity 2019+
-      - Rewired Editor: Copying an Action Category that contains Actions and copying those Actions now copies the sort order of the Actions.
-      - Changed Player input event system to allow modifying the event listeners inside an event callback without causing issues.
-
 1.1.35.3:
 
     Bug Fixes:
