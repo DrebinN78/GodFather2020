@@ -8,13 +8,13 @@ public class GameManager : MonoBehaviour
     //Liste des malus
     public ScriptablePenalty[] penaltyArray;
     //malus a trigger
-    private ScriptablePenalty pickedPenalty;
+    [Header("for debug only")]
+    [SerializeField]private ScriptablePenalty pickedPenalty;
     //Joueur qui a le malus
-    public GameObject playerWithPenalty;
+    private GameObject playerWithPenalty;
     //Timer entre malus
     public float timerBtwPenalty;
     private float currentTimerValue = 0;
-    public float penaltyDuration;
 
     public Text timerText;
 
@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
         if(currentTimerValue >= timerBtwPenalty)
         {
             timerText.text = timerBtwPenalty.ToString();
+            pickedPenalty.SetPlayer(playerWithPenalty);
             DoPenalty();
         }
         else

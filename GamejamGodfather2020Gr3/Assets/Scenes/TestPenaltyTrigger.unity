@@ -472,10 +472,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4998ddbcf9dc75478f957f932c627dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  penaltyArray: []
-  playerWithPenalty: {fileID: 0}
+  penaltyArray:
+  - {fileID: 11400000, guid: 0480229ce1d46e94db20c36fdb432be8, type: 2}
+  - {fileID: 11400000, guid: 744e63efb00aa0c42839a478a8cb682f, type: 2}
+  - {fileID: 11400000, guid: cb39695ace8b7e544a484e649b9b1aa8, type: 2}
+  - {fileID: 11400000, guid: 7096200f49397454f95a5ad73104628f, type: 2}
+  - {fileID: 11400000, guid: 413aad8b8463d79479c324a276a03c54, type: 2}
+  pickedPenalty: {fileID: 0}
   timerBtwPenalty: 10
-  penaltyDuration: 2
   timerText: {fileID: 71571818}
 --- !u!4 &1845886674
 Transform:

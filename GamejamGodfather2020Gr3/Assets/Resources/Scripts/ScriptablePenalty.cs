@@ -19,7 +19,7 @@ public class ScriptablePenalty : ScriptableObject
     public effect effectType = effect.Jump;
     [Range(0f, 2f)] public float valueModifier = 1; // the multiplier of the current value
     public float effectDuration = 3f;
-    public GameObject player;
+    private GameObject player;
 
             //case effect.Weight:
                 //get player rigidbody
@@ -29,6 +29,10 @@ public class ScriptablePenalty : ScriptableObject
                 //add force in the opposite direction (same force as a dash or not ?)
                 //set player's rigidbody weight to something else
                 //break;
+    public void SetPlayer(GameObject _player)
+    {
+        player = _player;
+    }
 
     public IEnumerator Jump()
     {
