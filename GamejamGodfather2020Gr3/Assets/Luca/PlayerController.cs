@@ -6,6 +6,7 @@ using Rewired;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private Collider2D col;
     public Animator anim;
     public float speed;
     public float jumpForce;
@@ -35,6 +36,8 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem dash;
     public ParticleSystem run;
 
+    public GameObject blast;
+
     public ParticleSystem.MinMaxCurve mmc;
 
     [SerializeField] private int playerID = 0;
@@ -44,6 +47,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
         anim = GetComponent<Animator>();
         playerC = ReInput.players.GetPlayer(playerID);
         dashTime = startDashTime;
@@ -175,6 +179,14 @@ public class PlayerController : MonoBehaviour
         if(dashCoolDown <= 0 && dashGroundReady){
             dashCoolDown = startDashCoolDown;
             canDash = true;
+        }
+    }
+
+
+    void OnTriggerEnter2D(Collider2D truc){
+        if (truc.gameObject.tag == "DeathRight"){  
+            col.isTrigger = true;
+            Instantiate(blast, transform.position, Quaternion.identity);
         }
     }
 
