@@ -6,6 +6,7 @@ using Rewired;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
+    public Animator anim;
     public float speed;
     public float jumpForce;
     public float moveInput;
@@ -30,6 +31,12 @@ public class PlayerController : MonoBehaviour
     public float startDashCoolDown;
     public bool dashGroundReady;
 
+    public ParticleSystem ground;
+    public ParticleSystem dash;
+    public ParticleSystem run;
+
+    public ParticleSystem.MinMaxCurve mmc;
+
     [SerializeField] private int playerID = 0;
 
     [SerializeField] private Player playerC;
@@ -37,8 +44,13 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         playerC = ReInput.players.GetPlayer(playerID);
         dashTime = startDashTime;
+
+
+        var emission = run.emission;
+        emission.rateOverTime = mmc;
     }
 
     void Update()
@@ -47,25 +59,46 @@ public class PlayerController : MonoBehaviour
         moveInput = playerC.GetAxis("MoveH");
         moveInput2 = playerC.GetAxis("MoveV");
 
-            if(moveInput < 0){
+        anim.SetFloat("Speed", Mathf.Abs(moveInput));
+
+        if(moveInput != 0 && isGrounded){
+            mmc.constant = 50;
+            var emission = run.emission;
+            emission.rateOverTime = mmc;
+            
+        }else{
+            mmc.constant = 0;
+            var emission = run.emission;
+            emission.rateOverTime = mmc;
+        }
+
+        if(moveInput < 0){
              rb.velocity = new Vector2(-speed, rb.velocity.y);
-             //transform.eulerAngles = new Vector3(0, 180, 0);
+             transform.eulerAngles = new Vector3(0, 180, 0);
         } else if(moveInput > 0){
              rb.velocity = new Vector2(speed, rb.velocity.y);
-             //transform.eulerAngles = new Vector3(0, 0, 0);
+             transform.eulerAngles = new Vector3(0, 0, 0);
         } else if(moveInput == 0){
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
 
         //Jump
-
+        bool wasGrounded = isGrounded;
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
+
+        if(!wasGrounded && isGrounded){
+            ground.Play();
+        }
 
         if(isGrounded){
         if(playerC.GetButtonDown("Jump")){
+            anim.SetTrigger("jump");
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);       
         }
             dashGroundReady = true;
+            anim.SetBool("floor", true);
+        }else{
+            anim.SetBool("floor", false);
         }
 
         //dash
@@ -96,6 +129,8 @@ public class PlayerController : MonoBehaviour
             canDash = false;
             dashGroundReady = false;
             isDashing = true;
+            anim.SetTrigger("Dash");
+            dash.Play();
             }
             }
         }else{
