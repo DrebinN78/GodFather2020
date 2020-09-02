@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     //Liste des malus
-    public ScriptableObject[] penaltyArray;
+    public ScriptablePenalty[] penaltyArray;
     //malus a trigger
-    private ScriptableObject pickedPenalty;
+    private ScriptablePenalty pickedPenalty;
     //Joueur qui a le malus
     public GameObject playerWithPenalty;
     //Timer entre malus
@@ -43,10 +43,14 @@ public class GameManager : MonoBehaviour
     {
         //check temps avant trigger malus
         currentTimerValue += Time.deltaTime;
-        timerText.text = currentTimerValue.ToString();
         if(currentTimerValue >= timerBtwPenalty)
         {
-            StartCoroutine(DoPenalty());
+            timerText.text = timerBtwPenalty.ToString();
+            DoPenalty();
+        }
+        else
+        {
+            timerText.text = currentTimerValue.ToString();
         }
     }
 
@@ -55,9 +59,38 @@ public class GameManager : MonoBehaviour
         //random ?
     }
 
-    public IEnumerator DoPenalty()
+    public void ResetTimer()
     {
-        yield return new WaitForSeconds(penaltyDuration);
         currentTimerValue = 0;
+    }
+
+    public void DoPenalty()
+    {
+        switch (pickedPenalty.effectType)
+        {
+            case effect.Jump:
+                StartCoroutine(pickedPenalty.Jump());
+                break;
+            case effect.Speed:
+                StartCoroutine(pickedPenalty.Speed());
+                break;
+            case effect.Invisibility:
+                StartCoroutine(pickedPenalty.Invisibility());
+                break;
+            case effect.Weight:
+                //get player rigidbody
+                //create temp var that contain player initial rigidbody value
+                //verify collision between player
+                //get the position of the player colliding
+                //add force in the opposite direction (same force as a dash or not ?)
+                //set player's rigidbody weight to something else
+                break;
+            case effect.Autojump:
+                StartCoroutine(pickedPenalty.AutoJump());
+                break;
+            default:
+                Debug.Log("No penalty was picked !");
+                break;
+        }
     }
 }
