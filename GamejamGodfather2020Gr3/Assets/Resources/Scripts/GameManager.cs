@@ -89,6 +89,9 @@ public class GameManager : MonoBehaviour
             case effect.Autojump:
                 StartCoroutine(pickedPenalty.AutoJump());
                 break;
+            case effect.Gravity:
+                StartCoroutine(pickedPenalty.Gravity());
+                break;
             default:
                 Debug.Log("No penalty was picked !");
                 break;

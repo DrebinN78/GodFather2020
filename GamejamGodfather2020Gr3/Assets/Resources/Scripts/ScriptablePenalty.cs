@@ -9,8 +9,8 @@ public enum effect
     Speed,
     Invisibility,
     Weight,
-    Autojump
-    //Gravity
+    Autojump,
+    Gravity
 }
 
 [CreateAssetMenu(fileName = "New Penalty", menuName = "Penalty")]
@@ -83,5 +83,13 @@ public class ScriptablePenalty : ScriptableObject
         }
         GameManager.instance.ResetTimer();
         yield return 0;
+    }
+
+    public IEnumerator Gravity()
+    {
+        Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+        rb.gravityScale = valueModifier;
+        yield return new WaitForSeconds(effectDuration);
+        rb.gravityScale = 1;
     }
 }
