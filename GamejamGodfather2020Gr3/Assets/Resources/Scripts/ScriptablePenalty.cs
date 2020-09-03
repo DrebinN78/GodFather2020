@@ -10,7 +10,8 @@ public enum effect
     Invisibility,
     Weight,
     Autojump,
-    Gravity
+    Gravity,
+    Size
 }
 
 [CreateAssetMenu(fileName = "New Penalty", menuName = "Penalty")]
@@ -98,5 +99,13 @@ public class ScriptablePenalty : ScriptableObject
         rb.gravityScale = valueModifier;
         yield return new WaitForSeconds(effectDuration);
         rb.gravityScale = 8;
+    }
+
+    public IEnumerator Size()
+    {
+        player.transform.localScale = new Vector3(valueModifier, valueModifier, 1);
+        yield return new WaitForSeconds(effectDuration);
+        player.transform.localScale = new Vector3(1, 1, 1);
+        GameManager.instance.ResetTimer();
     }
 }
