@@ -44,6 +44,9 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem run;
 
     public GameObject blast;
+    public GameObject blast2;
+    public GameObject blast3;
+    public GameObject blast4;
     public GameObject contact;
 
     public ParticleSystem.MinMaxCurve mmc;
@@ -200,6 +203,27 @@ public class PlayerController : MonoBehaviour
         if (truc.gameObject.tag == "DeathRight"){  
             col.isTrigger = true;
             Instantiate(blast, transform.position, Quaternion.identity);
+            transform.position = new Vector3(-10,-10,-10);
+            isAlive = false;
+        }
+
+        if (truc.gameObject.tag == "DeathUp"){  
+            col.isTrigger = true;
+            Instantiate(blast2, transform.position, Quaternion.identity);
+            transform.position = new Vector3(-10,-10,-10);
+            isAlive = false;
+        }
+
+        if (truc.gameObject.tag == "DeathLeft"){  
+            col.isTrigger = true;
+            Instantiate(blast3, transform.position, Quaternion.identity);
+            transform.position = new Vector3(-10,-10,-10);
+            isAlive = false;
+        }
+
+        if (truc.gameObject.tag == "DeathDown"){  
+            col.isTrigger = true;
+            Instantiate(blast4, transform.position, Quaternion.identity);
             transform.position = new Vector3(-10,-10,-10);
             isAlive = false;
         }

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ground
   - DeathRight
+  - DeathUp
+  - DeathLeft
+  - DeathDown
   layers:
   - Default
   - TransparentFX
