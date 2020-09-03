@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using Rewired;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -19,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     public Text timerText;
 
+    private GameObject[] allPlayers;
     public static GameManager instance = null;
     private void Awake()
     {
@@ -36,6 +39,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PickNewRandomPlayer();
         PickNewPenalty();
     }
 
@@ -60,15 +64,47 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void CheckForWinner()
+    {
+        int playerRemaining = 0;
+        foreach (GameObject player in allPlayers)
+        {
+            if (player.GetComponent<PlayerController>().IsAlive())
+                playerRemaining++;
+        }
+        if (playerRemaining <= 1 && allPlayers.Length > 1) // >1 player
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //restart
+        }
+        else if (playerRemaining == 0 && allPlayers.Length == 1) // 1 player
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //restart
+        }
+
+    }
+
     void PickNewPenalty()
     {
         pickedPenalty = penaltyArray[Random.Range(0, penaltyArray.Length)];
+    }
+
+    void PickNewRandomPlayer()
+    {
+        allPlayers = GameObject.FindGameObjectsWithTag("Player");
+        playerWithPenalty = allPlayers[Random.Range(0, allPlayers.Length)];
     }
 
     public void ResetTimer()
     {
         currentTimerValue = 0;
         readyToPunish = true;
+    }
+
+    public bool IsReadyToPunish()
+    {
+        return readyToPunish;
     }
 
     public void DoPenalty()
@@ -97,6 +133,9 @@ public class GameManager : MonoBehaviour
                 break;
             case effect.Gravity:
                 StartCoroutine(pickedPenalty.Gravity());
+                break;
+            case effect.Size:
+                StartCoroutine(pickedPenalty.Size());
                 break;
             default:
                 Debug.Log("No penalty was picked !");
