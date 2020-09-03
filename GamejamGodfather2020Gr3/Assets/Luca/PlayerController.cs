@@ -26,6 +26,12 @@ public class PlayerController : MonoBehaviour
     private float dashTime;
     public float startDashTime;
 
+    [Range(0f,5f)]
+    public float BumpMultiplier;
+    public float SquishDuration;
+    [Range(0.9f,0.5f)]
+    public float SquishValue;
+
     public GameObject arrow;
 
     public float dashCoolDown;
@@ -37,6 +43,7 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem run;
 
     public GameObject blast;
+    public GameObject contact;
 
     public ParticleSystem.MinMaxCurve mmc;
 
@@ -188,6 +195,23 @@ public class PlayerController : MonoBehaviour
             col.isTrigger = true;
             Instantiate(blast, transform.position, Quaternion.identity);
             transform.position = new Vector3(-10,-10,-10);
+        }
+    }
+    void OnColliderEnter2D(Collider2D truc){
+        if (truc.gameObject.tag == "Player"){  
+            Rigidbody2D RBPlayer = gameObject.GetComponent<Rigidbody2D>();
+            Rigidbody2D RBTarget = truc.gameObject.GetComponent<Rigidbody2D>();
+            Vector2 VelocityPlayer = RBPlayer.velocity;
+            Vector2 VelocityTarget = RBTarget.velocity;
+            float SpeedPlayer = VelocityPlayer.x * VelocityPlayer.y;
+            float SpeedTarget = VelocityTarget.x * VelocityPlayer.y;
+            if(SpeedPlayer > SpeedTarget){
+                RBTarget.AddForce((VelocityPlayer - VelocityTarget) * BumpMultiplier);
+            }
+            Instantiate(contact, transform.position, Quaternion.identity);
+            RBPlayer.transform.localScale = new Vector3(Mathf.Lerp(1f, SquishValue, SquishDuration/2f), Mathf.Lerp(1f, SquishValue, SquishDuration/2f), Mathf.Lerp(1f, SquishValue, SquishDuration/2f));
+            RBTarget.transform.localScale = new Vector3(Mathf.Lerp(1f, SquishValue, SquishDuration/2f), Mathf.Lerp(1f, SquishValue, SquishDuration/2f), Mathf.Lerp(1f, SquishValue, SquishDuration/2f));
+
         }
     }
 
