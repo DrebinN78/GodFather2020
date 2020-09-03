@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     public float moveInput;
     public float moveInput2;
+    private bool isAlive = true;
 
 
     public bool isGrounded;
@@ -189,12 +190,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public bool IsAlive()
+    {
+        return isAlive;
+    }
+
 
     void OnTriggerEnter2D(Collider2D truc){
         if (truc.gameObject.tag == "DeathRight"){  
             col.isTrigger = true;
             Instantiate(blast, transform.position, Quaternion.identity);
             transform.position = new Vector3(-10,-10,-10);
+            isAlive = false;
         }
     }
     void OnColliderEnter2D(Collider2D truc){
@@ -211,7 +218,10 @@ public class PlayerController : MonoBehaviour
             Instantiate(contact, transform.position, Quaternion.identity);
             RBPlayer.transform.localScale = new Vector3(Mathf.Lerp(1f, SquishValue, SquishDuration/2f), Mathf.Lerp(1f, SquishValue, SquishDuration/2f), Mathf.Lerp(1f, SquishValue, SquishDuration/2f));
             RBTarget.transform.localScale = new Vector3(Mathf.Lerp(1f, SquishValue, SquishDuration/2f), Mathf.Lerp(1f, SquishValue, SquishDuration/2f), Mathf.Lerp(1f, SquishValue, SquishDuration/2f));
-
+            if(gameObject.name == GameManager.instance.playerWithPenalty.name && GameManager.instance.IsReadyToPunish())
+            {
+                GameManager.instance.playerWithPenalty = truc.gameObject;
+            }
         }
     }
 

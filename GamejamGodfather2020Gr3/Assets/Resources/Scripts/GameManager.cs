@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -20,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     public Text timerText;
 
-    private Player player;
+    private GameObject[] allPlayers;
     public static GameManager instance = null;
     private void Awake()
     {
@@ -61,6 +62,28 @@ public class GameManager : MonoBehaviour
         {
             timerText.text = currentTimerValue.ToString();
         }
+        CheckForWinner();
+    }
+
+    void CheckForWinner()
+    {
+        int playerRemaining = 0;
+        foreach (GameObject player in allPlayers)
+        {
+            if (player.GetComponent<PlayerController>().IsAlive())
+                playerRemaining++;
+        }
+        if (playerRemaining <= 1 && allPlayers.Length > 1) // >1 player
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //restart
+        }
+        else if (playerRemaining == 0 && allPlayers.Length == 1) // 1 player
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //restart
+        }
+
     }
 
     void PickNewPenalty()
@@ -70,7 +93,7 @@ public class GameManager : MonoBehaviour
 
     void PickNewRandomPlayer()
     {
-        GameObject[] allPlayers = GameObject.FindGameObjectsWithTag("Player");
+        allPlayers = GameObject.FindGameObjectsWithTag("Player");
         playerWithPenalty = allPlayers[Random.Range(0, allPlayers.Length)];
     }
 
@@ -78,6 +101,11 @@ public class GameManager : MonoBehaviour
     {
         currentTimerValue = 0;
         readyToPunish = true;
+    }
+
+    public bool IsReadyToPunish()
+    {
+        return readyToPunish;
     }
 
     public void DoPenalty()
