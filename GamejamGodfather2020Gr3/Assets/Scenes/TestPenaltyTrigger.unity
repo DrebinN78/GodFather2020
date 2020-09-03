@@ -2269,6 +2269,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 385eeacdbb3fdf54b988014e37512180, type: 2}
   - {fileID: 11400000, guid: 6a467330107a3ac40b5ea52095da5714, type: 2}
   - {fileID: 11400000, guid: 7a19c73a098c93846a79087cc495652d, type: 2}
+  - {fileID: 11400000, guid: 7e69da33cf4002b41bb8237bb455acee, type: 2}
   pickedPenalty: {fileID: 0}
   playerWithPenalty: {fileID: 150281289}
   timerBtwPenalty: 5
