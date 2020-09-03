@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
         {
             timerText.text = currentTimerValue.ToString();
         }
+        CheckForWinner();
     }
 
     void CheckForWinner()
