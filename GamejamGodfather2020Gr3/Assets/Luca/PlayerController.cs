@@ -211,8 +211,9 @@ public class PlayerController : MonoBehaviour
             if (gameObject == GameManager.instance.WhoIsCursed())
             {
                 GameManager.instance.PickNewRandomPlayer();
+                if(GameManager.instance.IsReadyToPunish())
+                    GameManager.instance.ResetTimer();
             }
-            GameManager.instance.ResetTimer();
         }
     }
     void OnColliderEnter2D(Collider2D truc){
