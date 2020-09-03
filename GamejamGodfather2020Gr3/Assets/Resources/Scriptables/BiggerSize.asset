@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 426030a28ba14074a90962704d5c9ce1, type: 3}
   m_Name: BiggerSize
   m_EditorClassIdentifier: 
-  effectType: 0
-  valueModifier: 1
+  effectType: 6
+  valueModifier: 2
   effectDuration: 3
