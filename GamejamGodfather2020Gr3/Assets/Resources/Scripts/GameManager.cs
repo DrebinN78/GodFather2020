@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     //Timer entre malus
     public float timerBtwPenalty;
     private float currentTimerValue = 0;
+    private bool readyToPunish = true;
 
     public Text timerText;
 
@@ -47,7 +48,11 @@ public class GameManager : MonoBehaviour
         {
             timerText.text = timerBtwPenalty.ToString();
             pickedPenalty.SetPlayer(playerWithPenalty);
-            DoPenalty();
+            if (readyToPunish)
+            {
+                readyToPunish = false;
+                DoPenalty();
+            }
         }
         else
         {
@@ -63,6 +68,7 @@ public class GameManager : MonoBehaviour
     public void ResetTimer()
     {
         currentTimerValue = 0;
+        readyToPunish = true;
     }
 
     public void DoPenalty()

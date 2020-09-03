@@ -81,7 +81,7 @@ public class ScriptablePenalty : ScriptableObject
                 Rigidbody2D rb = pc.GetComponentInParent<Rigidbody2D>();
                 rb.velocity = new Vector2(rb.velocity.x, pc.jumpForce);
             }
-            timer = Time.deltaTime;
+            timer += Time.deltaTime;
         }
         GameManager.instance.ResetTimer();
         yield return 0;
