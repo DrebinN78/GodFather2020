@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [Header("for debug only")]
     [SerializeField]private ScriptablePenalty pickedPenalty;
     //Joueur qui a le malus
-    private GameObject playerWithPenalty;
+    public GameObject playerWithPenalty;
     //Timer entre malus
     public float timerBtwPenalty;
     private float currentTimerValue = 0;
