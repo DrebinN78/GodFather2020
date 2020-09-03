@@ -122,13 +122,16 @@ public class GameManager : MonoBehaviour
         //        RemoveFromPlayer(remainingPlayers[i]);
         //    }
         //}
-        if (bestPlayer == null)
+        if (remainingPlayers.Count > 0)
         {
-            playerWithPenalty = remainingPlayers[Random.Range(0, remainingPlayers.Count)];
-        }
-        else
-        {
-            playerWithPenalty = bestPlayer;
+            if (bestPlayer == null)
+            {
+                playerWithPenalty = remainingPlayers[Random.Range(0, remainingPlayers.Count)];
+            }
+            else
+            {
+                playerWithPenalty = bestPlayer;
+            }
         }
     }
 

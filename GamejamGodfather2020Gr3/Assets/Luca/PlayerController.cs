@@ -208,7 +208,10 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(-10,-10,-10);
             isAlive = false;
             GameManager.instance.RemoveFromTheLiving(this.gameObject);
-            GameManager.instance.PickNewRandomPlayer();
+            if (gameObject == GameManager.instance.WhoIsCursed())
+            {
+                GameManager.instance.PickNewRandomPlayer();
+            }
             GameManager.instance.ResetTimer();
         }
     }
