@@ -6,7 +6,7 @@ using Rewired;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private Collider2D col;
+    public Collider2D col;
     public Animator anim;
     public float speed;
     public float jumpForce;
@@ -187,6 +187,7 @@ public class PlayerController : MonoBehaviour
         if (truc.gameObject.tag == "DeathRight"){  
             col.isTrigger = true;
             Instantiate(blast, transform.position, Quaternion.identity);
+            transform.position = new Vector3(-10,-10,-10);
         }
     }
 
