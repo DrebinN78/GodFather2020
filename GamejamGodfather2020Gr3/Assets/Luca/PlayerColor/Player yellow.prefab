@@ -5233,6 +5233,9 @@ MonoBehaviour:
   direction: 0
   dashSpeed: 40
   startDashTime: 0.1
+  BumpMultiplier: 5
+  SquishDuration: 0.5
+  SquishValue: 0.9
   arrow: {fileID: 441123084482052886}
   dashCoolDown: 0
   startDashCoolDown: 0.5
@@ -5241,6 +5244,7 @@ MonoBehaviour:
   dash: {fileID: 4283270348812534650}
   run: {fileID: 4283270348170681833}
   blast: {fileID: 5983515761940311687, guid: 4019430be8308a54ba285c712d4d5dbf, type: 3}
+  contact: {fileID: 7313028277170271790, guid: 88425ee738509f844b0da993cc4d9acf, type: 3}
   mmc:
     m_Mode: 0
     m_CurveMultiplier: 0
