@@ -10,7 +10,8 @@ public enum effect
     Invisibility,
     Weight,
     Autojump,
-    Gravity
+    Gravity,
+    Size
 }
 
 [CreateAssetMenu(fileName = "New Penalty", menuName = "Penalty")]
@@ -48,20 +49,24 @@ public class ScriptablePenalty : ScriptableObject
     {
         PlayerController pc = player.GetComponent<PlayerController>();
         float initSpeed = pc.speed;
+        float initDashSpeed = pc.dashSpeed;
         pc.speed *= valueModifier;
+        pc.dashSpeed *= valueModifier;
         yield return new WaitForSeconds(effectDuration);
         pc.speed = initSpeed;
+        pc.dashSpeed = initDashSpeed;
         GameManager.instance.ResetTimer();
     }
 
     public IEnumerator Invisibility()
     {
-        SpriteRenderer sr = player.GetComponent<SpriteRenderer>();
-        sr.enabled = false;
-        //Sprite initSprite = sr.sprite;
+        GameObject go = GameObject.Find("/"+ player.name + "/Player_scale/Player_sprite");
+        GameObject go2 = GameObject.Find("/"+ player.name + "/arrow (1)");
+        go.SetActive(false);
+        go2.SetActive(false);
         yield return new WaitForSeconds(effectDuration);
-        ///sr.sprite = initSprite;
-        sr.enabled = true;
+        go.SetActive(true);
+        go2.SetActive(true);
         GameManager.instance.ResetTimer();
     }
 
@@ -82,6 +87,7 @@ public class ScriptablePenalty : ScriptableObject
                 rb.velocity = new Vector2(rb.velocity.x, pc.jumpForce);
             }
             timer += Time.deltaTime;
+            yield return new WaitForSeconds(Time.deltaTime);
         }
         GameManager.instance.ResetTimer();
         yield return 0;
@@ -92,6 +98,14 @@ public class ScriptablePenalty : ScriptableObject
         Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
         rb.gravityScale = valueModifier;
         yield return new WaitForSeconds(effectDuration);
-        rb.gravityScale = 1;
+        rb.gravityScale = 8;
+    }
+
+    public IEnumerator Size()
+    {
+        player.transform.localScale = new Vector3(valueModifier, valueModifier, 1);
+        yield return new WaitForSeconds(effectDuration);
+        player.transform.localScale = new Vector3(1, 1, 1);
+        GameManager.instance.ResetTimer();
     }
 }
