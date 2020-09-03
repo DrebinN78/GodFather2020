@@ -202,6 +202,9 @@ public class PlayerController : MonoBehaviour
             Instantiate(blast, transform.position, Quaternion.identity);
             transform.position = new Vector3(-10,-10,-10);
             isAlive = false;
+            GameManager.instance.PickNewRandomPlayer();
+            GameManager.instance.RemoveFromPlayer(this.gameObject);
+            GameManager.instance.ResetTimer();
         }
     }
     void OnColliderEnter2D(Collider2D truc){
