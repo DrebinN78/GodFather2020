@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        PickNewPenalty();
     }
 
     // Update is called once per frame
@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
 
     void PickNewPenalty()
     {
-        //random ?
+        pickedPenalty = penaltyArray[Random.Range(0, penaltyArray.Length)];
     }
 
     public void ResetTimer()

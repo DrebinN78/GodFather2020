@@ -57,9 +57,11 @@ public class ScriptablePenalty : ScriptableObject
     public IEnumerator Invisibility()
     {
         SpriteRenderer sr = player.GetComponent<SpriteRenderer>();
-        Sprite initSprite = sr.sprite;
+        sr.enabled = false;
+        //Sprite initSprite = sr.sprite;
         yield return new WaitForSeconds(effectDuration);
-        sr.sprite = initSprite;
+        ///sr.sprite = initSprite;
+        sr.enabled = true;
         GameManager.instance.ResetTimer();
     }
 

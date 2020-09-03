@@ -478,6 +478,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cb39695ace8b7e544a484e649b9b1aa8, type: 2}
   - {fileID: 11400000, guid: 7096200f49397454f95a5ad73104628f, type: 2}
   - {fileID: 11400000, guid: 413aad8b8463d79479c324a276a03c54, type: 2}
+  - {fileID: 11400000, guid: 385eeacdbb3fdf54b988014e37512180, type: 2}
   pickedPenalty: {fileID: 0}
   timerBtwPenalty: 10
   timerText: {fileID: 71571818}
