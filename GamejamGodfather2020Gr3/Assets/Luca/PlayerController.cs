@@ -108,7 +108,8 @@ public class PlayerController : MonoBehaviour
         if(isGrounded){
         if(playerC.GetButtonDown("Jump")){
             anim.SetTrigger("jump");
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);       
+            AudioManager.instance.Play("Jump");
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);       
         }
             dashGroundReady = true;
             anim.SetBool("floor", true);
@@ -146,6 +147,7 @@ public class PlayerController : MonoBehaviour
             isDashing = true;
             anim.SetTrigger("Dash");
             dash.Play();
+            AudioManager.instance.Play("Dash");
             }
             }
         }else{
@@ -213,6 +215,7 @@ public class PlayerController : MonoBehaviour
             GameManager.instance.RemoveFromTheLiving(this.gameObject);
             GameManager.instance.PickNewRandomPlayer();
             GameManager.instance.ResetTimer();
+            AudioManager.instance.Play("Death");
         }
 
         if (truc.gameObject.tag == "DeathUp"){  
@@ -220,6 +223,7 @@ public class PlayerController : MonoBehaviour
             Instantiate(blast2, transform.position, Quaternion.identity);
             transform.position = new Vector3(-10,-10,-10);
             isAlive = false;
+            AudioManager.instance.Play("Death");
         }
 
         if (truc.gameObject.tag == "DeathLeft"){  
@@ -227,6 +231,7 @@ public class PlayerController : MonoBehaviour
             Instantiate(blast3, transform.position, Quaternion.identity);
             transform.position = new Vector3(-10,-10,-10);
             isAlive = false;
+            AudioManager.instance.Play("Death");
         }
 
         if (truc.gameObject.tag == "DeathDown"){  
@@ -234,10 +239,12 @@ public class PlayerController : MonoBehaviour
             Instantiate(blast4, transform.position, Quaternion.identity);
             transform.position = new Vector3(-10,-10,-10);
             isAlive = false;
+            AudioManager.instance.Play("Death");
         }
     }
     void OnColliderEnter2D(Collider2D truc){
         if (truc.gameObject.tag == "Player"){  
+            AudioManager.instance.Play("Slime_Choc");
             Rigidbody2D RBPlayer = gameObject.GetComponent<Rigidbody2D>();
             Rigidbody2D RBTarget = truc.gameObject.GetComponent<Rigidbody2D>();
             Vector2 VelocityPlayer = RBPlayer.velocity;
