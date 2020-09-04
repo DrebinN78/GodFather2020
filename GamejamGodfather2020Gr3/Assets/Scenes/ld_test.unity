@@ -222,12 +222,21 @@ PrefabInstance:
       propertyPath: playerID
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3619318655708780396, guid: 232bf205006b05245b8abf9687261398, type: 3}
+      propertyPath: col
+      value: 
+      objectReference: {fileID: 34596111}
     - target: {fileID: 3619318656586624109, guid: 232bf205006b05245b8abf9687261398, type: 3}
       propertyPath: playerID
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 232bf205006b05245b8abf9687261398, type: 3}
+--- !u!61 &34596111 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 1104634870090576033, guid: 232bf205006b05245b8abf9687261398, type: 3}
+  m_PrefabInstance: {fileID: 34596110}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &43067604 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4233730982035255448, guid: 91c5ef259f7835a45979a00911dbc9e4, type: 3}
@@ -10804,6 +10813,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7e69da33cf4002b41bb8237bb455acee, type: 2}
   timerBtwPenalty: 5
   timerGO: {fileID: 7956378464068654883, guid: 4dc87dee7af069344bfe777b801a065a, type: 3}
+  malusFXGOAutoJump: {fileID: 2058190903623127929, guid: 1e278b0faa76cef40b68c4144c340277, type: 3}
+  malusFXGOGiant: {fileID: 5069089350343554936, guid: 4589940aa042d854e864008338b2df2d, type: 3}
+  malusFXGOGravity: {fileID: 8649519644787144755, guid: dabbead5479449c4d90c3ed7a1d7b34c, type: 3}
+  malusFXGOInvisible: {fileID: 5673425401725579622, guid: c4dd1f3222228ea48977dba7b019a29d, type: 3}
+  malusFXGOPlayer: {fileID: 7306101557799249665, guid: 5e671f1ba6ac71a4a84aa4271e5bc257, type: 3}
+  malusFXGOPlume: {fileID: 4233730982035255453, guid: 91c5ef259f7835a45979a00911dbc9e4, type: 3}
+  malusFXGOSlide: {fileID: 139844236570104747, guid: 74b71c592fc7b9e419af38380412014b, type: 3}
+  malusFXGOSpeed: {fileID: 8360836261816098268, guid: 86accea5c6a780f4ab297ad6a8c614a4, type: 3}
 --- !u!4 &849716851
 Transform:
   m_ObjectHideFlags: 0
@@ -10886,22 +10903,6 @@ PrefabInstance:
       propertyPath: col
       value: 
       objectReference: {fileID: 1384333925}
-    - target: {fileID: 441123085349451796, guid: 01abdbe30a5237b44a59478a0f0db14c, type: 3}
-      propertyPath: blast2
-      value: 
-      objectReference: {fileID: 5572713961919358708, guid: 6f6912890b7b9ff469671890e11ed1cf, type: 3}
-    - target: {fileID: 441123085349451796, guid: 01abdbe30a5237b44a59478a0f0db14c, type: 3}
-      propertyPath: blast3
-      value: 
-      objectReference: {fileID: 221235345566874899, guid: ab1f968ed82a0604eacd0a0a5f5afc65, type: 3}
-    - target: {fileID: 441123085349451796, guid: 01abdbe30a5237b44a59478a0f0db14c, type: 3}
-      propertyPath: blast4
-      value: 
-      objectReference: {fileID: 5138601380569619179, guid: 3a4d00aaace505441b81f1f192661195, type: 3}
-    - target: {fileID: 441123085349451796, guid: 01abdbe30a5237b44a59478a0f0db14c, type: 3}
-      propertyPath: blast
-      value: 
-      objectReference: {fileID: 7985699413534332807, guid: 42c6ce3d8a495e547872b25fe56bfc5a, type: 3}
     - target: {fileID: 4283270347822844564, guid: 01abdbe30a5237b44a59478a0f0db14c, type: 3}
       propertyPath: m_Mesh
       value: 

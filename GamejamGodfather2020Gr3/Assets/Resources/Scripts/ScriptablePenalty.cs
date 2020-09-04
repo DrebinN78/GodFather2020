@@ -37,17 +37,24 @@ public class ScriptablePenalty : ScriptableObject
 
     public IEnumerator Jump()
     {
+        GameObject fx = Instantiate(GameManager.instance.malusFXGOPlume);
         PlayerController pc = player.GetComponent<PlayerController>();
+        fx.transform.parent = FindObjectOfType<Camera>().transform;
+        fx.transform.localPosition = new Vector3(fx.transform.localPosition.x, fx.transform.localPosition.y ,fx.transform.localPosition.z +10);
         float initJumpForce = pc.jumpForce;
         pc.jumpForce *= valueModifier;
         yield return new WaitForSeconds(effectDuration);
         pc.jumpForce = initJumpForce;
         GameManager.instance.ResetTimer();
+        Destroy(fx);
     }
 
     public IEnumerator Speed()
     {
+        GameObject fx = Instantiate(GameManager.instance.malusFXGOSpeed);
         PlayerController pc = player.GetComponent<PlayerController>();
+        fx.transform.parent = FindObjectOfType<Camera>().transform;
+        fx.transform.localPosition = new Vector3(fx.transform.localPosition.x, fx.transform.localPosition.y ,fx.transform.localPosition.z +10);
         float initSpeed = pc.speed;
         float initDashSpeed = pc.dashSpeed;
         pc.speed *= valueModifier;
@@ -56,6 +63,7 @@ public class ScriptablePenalty : ScriptableObject
         pc.speed = initSpeed;
         pc.dashSpeed = initDashSpeed;
         GameManager.instance.ResetTimer();
+        Destroy(fx);
     }
 
     public IEnumerator Invisibility()
@@ -77,7 +85,10 @@ public class ScriptablePenalty : ScriptableObject
 
     public IEnumerator AutoJump()
     {
+        GameObject fx = Instantiate(GameManager.instance.malusFXGOAutoJump);
         PlayerController pc = player.GetComponent<PlayerController>();
+        fx.transform.parent = FindObjectOfType<Camera>().transform;
+        fx.transform.localPosition = new Vector3(fx.transform.localPosition.x, fx.transform.localPosition.y ,fx.transform.localPosition.z +10);
         float timer = 0;
         while (timer < effectDuration)
         {
@@ -90,23 +101,32 @@ public class ScriptablePenalty : ScriptableObject
             yield return new WaitForSeconds(Time.deltaTime);
         }
         GameManager.instance.ResetTimer();
+        Destroy(fx);
         yield return 0;
     }
 
     public IEnumerator Gravity()
     {
+        GameObject fx = Instantiate(GameManager.instance.malusFXGOGravity);
         Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+        fx.transform.parent = FindObjectOfType<Camera>().transform;
+        fx.transform.localPosition = new Vector3(fx.transform.localPosition.x, fx.transform.localPosition.y ,fx.transform.localPosition.z +10);
         rb.gravityScale = valueModifier;
         yield return new WaitForSeconds(effectDuration);
         rb.gravityScale = 8;
         GameManager.instance.ResetTimer();
+        Destroy(fx);
     }
 
     public IEnumerator Size()
     {
+        GameObject fx = Instantiate(GameManager.instance.malusFXGOGiant);
         player.transform.localScale = new Vector3(valueModifier, valueModifier, 1);
+        fx.transform.parent = FindObjectOfType<Camera>().transform;
+        fx.transform.localPosition = new Vector3(fx.transform.localPosition.x, fx.transform.localPosition.y ,fx.transform.localPosition.z +10);
         yield return new WaitForSeconds(effectDuration);
         player.transform.localScale = new Vector3(1, 1, 1);
         GameManager.instance.ResetTimer();
+        Destroy(fx);
     }
 }
