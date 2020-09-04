@@ -67,20 +67,31 @@ public class GameManager : MonoBehaviour
         int playerRemaining = 0;
         for (int i = 0; i < remainingPlayers.Count; i++)
         {
-            if (remainingPlayers[i].GetComponent<PlayerController>().IsAlive())
-                playerRemaining++;
+            if (remainingPlayers[i] != null)
+            {
+                PlayerController temppc = remainingPlayers[i].GetComponent<PlayerController>();
+                if (temppc != null && temppc.IsAlive())
+                {
+                    playerRemaining++;
+                    temppc = null;
+                }
+            }
         }
         if (playerRemaining <= 1 && allPlayers.Count > 1) // >1 player
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             GetAllPlayers();
             remainingPlayers = allPlayers;
+            PickNewRandomPlayer();
+            ResetTimer();
         }
         else if (playerRemaining == 0 && allPlayers.Count == 1) // 1 player
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             GetAllPlayers();
             remainingPlayers = allPlayers;
+            PickNewRandomPlayer();
+            ResetTimer();
         }
 
     }
@@ -122,13 +133,16 @@ public class GameManager : MonoBehaviour
         //        RemoveFromPlayer(remainingPlayers[i]);
         //    }
         //}
-        if (bestPlayer == null)
+        if (remainingPlayers.Count > 0)
         {
-            playerWithPenalty = remainingPlayers[Random.Range(0, remainingPlayers.Count)];
-        }
-        else
-        {
-            playerWithPenalty = bestPlayer;
+            if (bestPlayer == null)
+            {
+                playerWithPenalty = remainingPlayers[Random.Range(0, remainingPlayers.Count)];
+            }
+            else
+            {
+                playerWithPenalty = bestPlayer;
+            }
         }
     }
 

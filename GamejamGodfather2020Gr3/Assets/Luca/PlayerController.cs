@@ -213,9 +213,12 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(-10,-10,-10);
             isAlive = false;
             GameManager.instance.RemoveFromTheLiving(this.gameObject);
-            GameManager.instance.PickNewRandomPlayer();
-            GameManager.instance.ResetTimer();
-            AudioManager.instance.Play("Death");
+            if (gameObject == GameManager.instance.WhoIsCursed())
+            {
+                GameManager.instance.PickNewRandomPlayer();
+                if(GameManager.instance.IsReadyToPunish())
+                    GameManager.instance.ResetTimer();
+            }
         }
 
         if (truc.gameObject.tag == "DeathUp"){  
