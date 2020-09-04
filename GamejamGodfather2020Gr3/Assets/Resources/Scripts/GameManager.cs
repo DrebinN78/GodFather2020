@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     private List<GameObject> allPlayers;
     private List<GameObject> remainingPlayers;
 
+    public GameObject timerGO;
+
     public static GameManager instance = null;
     private void Awake()
     {
@@ -160,6 +162,8 @@ public class GameManager : MonoBehaviour
 
     public void DoPenalty()
     {
+        GameObject timer = Instantiate(timerGO, FindObjectOfType<Camera>().transform);
+        Destroy(timer, timerBtwPenalty);
         switch (pickedPenalty.effectType)
         {
             case effect.Jump:
@@ -192,5 +196,6 @@ public class GameManager : MonoBehaviour
                 Debug.Log("No penalty was picked !");
                 break;
         }
+        
     }
 }
