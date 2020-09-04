@@ -15,8 +15,7 @@ public class AudioManager : MonoBehaviour
     {
         if (instance == null)
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject);  
+            instance = this; 
         }
         else
         {
@@ -36,7 +35,7 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
-        MusicPrefab = Resources.Load<GameObject>("Prefab/Musique");
+        //MusicPrefab = Resources.Load<GameObject>("Prefab/Musique");
     }
 
     public void Start()

@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        if (playerRemaining <= 1 && allPlayers.Count > 1) // >1 player
+        if (playerRemaining <= 1)// && allPlayers.Count > 1) // >1 player
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             GetAllPlayers();
@@ -87,14 +87,14 @@ public class GameManager : MonoBehaviour
             PickNewRandomPlayer();
             ResetTimer();
         }
-        else if (playerRemaining == 0 && allPlayers.Count == 1) // 1 player
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            GetAllPlayers();
-            remainingPlayers = allPlayers;
-            PickNewRandomPlayer();
-            ResetTimer();
-        }
+        //else if (playerRemaining == 0 && allPlayers.Count == 1) // 1 player
+        //{
+        //    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //    GetAllPlayers();
+        //    remainingPlayers = allPlayers;
+        //    PickNewRandomPlayer();
+        //    ResetTimer();
+        //}
 
     }
 
