@@ -61,10 +61,10 @@ public class GameManager : MonoBehaviour
                 DoPenalty();
             }
         }
-        CheckForWinner();
+        //CheckForWinner();
     }
 
-    void CheckForWinner()
+    public void CheckForWinner()
     {
         int playerRemaining = 0;
         for (int i = 0; i < remainingPlayers.Count; i++)
