@@ -67,11 +67,14 @@ public class GameManager : MonoBehaviour
         int playerRemaining = 0;
         for (int i = 0; i < remainingPlayers.Count; i++)
         {
-            PlayerController temppc = remainingPlayers[i].GetComponent<PlayerController>();
-            if (temppc != null && temppc.IsAlive())
+            if (remainingPlayers[i] != null)
             {
-                playerRemaining++;
-                temppc = null;
+                PlayerController temppc = remainingPlayers[i].GetComponent<PlayerController>();
+                if (temppc != null && temppc.IsAlive())
+                {
+                    playerRemaining++;
+                    temppc = null;
+                }
             }
         }
         if (playerRemaining <= 1 && allPlayers.Count > 1) // >1 player
