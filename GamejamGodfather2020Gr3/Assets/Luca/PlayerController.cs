@@ -198,6 +198,11 @@ public class PlayerController : MonoBehaviour
         return isAlive;
     }
 
+    public void NoLongerDead()
+    {
+        isAlive = true;
+    }
+
 
     void OnTriggerEnter2D(Collider2D truc){
         if (truc.gameObject.tag == "DeathRight"){  
@@ -205,6 +210,9 @@ public class PlayerController : MonoBehaviour
             Instantiate(blast, transform.position, Quaternion.identity);
             transform.position = new Vector3(-10,-10,-10);
             isAlive = false;
+            GameManager.instance.RemoveFromTheLiving(this.gameObject);
+            GameManager.instance.PickNewRandomPlayer();
+            GameManager.instance.ResetTimer();
         }
 
         if (truc.gameObject.tag == "DeathUp"){  
@@ -242,9 +250,9 @@ public class PlayerController : MonoBehaviour
             Instantiate(contact, transform.position, Quaternion.identity);
             RBPlayer.transform.localScale = new Vector3(Mathf.Lerp(1f, SquishValue, SquishDuration/2f), Mathf.Lerp(1f, SquishValue, SquishDuration/2f), Mathf.Lerp(1f, SquishValue, SquishDuration/2f));
             RBTarget.transform.localScale = new Vector3(Mathf.Lerp(1f, SquishValue, SquishDuration/2f), Mathf.Lerp(1f, SquishValue, SquishDuration/2f), Mathf.Lerp(1f, SquishValue, SquishDuration/2f));
-            if(gameObject.name == GameManager.instance.playerWithPenalty.name && GameManager.instance.IsReadyToPunish())
+            if(gameObject == GameManager.instance.WhoIsCursed() && GameManager.instance.IsReadyToPunish())
             {
-                GameManager.instance.playerWithPenalty = truc.gameObject;
+                GameManager.instance.IGuessImCursed(truc.gameObject);
             }
         }
     }

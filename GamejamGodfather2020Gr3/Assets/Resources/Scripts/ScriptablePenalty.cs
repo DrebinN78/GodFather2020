@@ -99,6 +99,7 @@ public class ScriptablePenalty : ScriptableObject
         rb.gravityScale = valueModifier;
         yield return new WaitForSeconds(effectDuration);
         rb.gravityScale = 8;
+        GameManager.instance.ResetTimer();
     }
 
     public IEnumerator Size()

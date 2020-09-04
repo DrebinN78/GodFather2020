@@ -3,25 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    //Liste des malus
+    //List of all penalties
     public ScriptablePenalty[] penaltyArray;
-    //malus a trigger
-    [Header("for debug only")]
-    [SerializeField]private ScriptablePenalty pickedPenalty;
-    //Joueur qui a le malus
-    public GameObject playerWithPenalty;
-    //Timer entre malus
+    //Penalty that will be triggered
+    private ScriptablePenalty pickedPenalty;
+    //Player that the penalty will target
+    private GameObject playerWithPenalty;
+    //Winner of the last round
+    private GameObject bestPlayer = null;
+    //Timer between penalties
     public float timerBtwPenalty;
     private float currentTimerValue = 0;
     private bool readyToPunish = true;
 
-    public Text timerText;
+    private List<GameObject> allPlayers;
+    private List<GameObject> remainingPlayers;
 
-    private GameObject[] allPlayers;
     public static GameManager instance = null;
     private void Awake()
     {
@@ -39,8 +39,10 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PickNewRandomPlayer();
-        PickNewPenalty();
+        GetAllPlayers(); //Getting all player in the scene
+        remainingPlayers = allPlayers;
+        PickNewRandomPlayer(); //choosing a player to curse
+        PickNewPenalty(); //choosing the curse
     }
 
     // Update is called once per frame
@@ -48,9 +50,8 @@ public class GameManager : MonoBehaviour
     {
         //check temps avant trigger malus
         currentTimerValue += Time.deltaTime;
-        if(currentTimerValue >= timerBtwPenalty)
+        if (currentTimerValue >= timerBtwPenalty)
         {
-            timerText.text = timerBtwPenalty.ToString();
             pickedPenalty.SetPlayer(playerWithPenalty);
             if (readyToPunish)
             {
@@ -58,46 +59,82 @@ public class GameManager : MonoBehaviour
                 DoPenalty();
             }
         }
-        else
-        {
-            timerText.text = currentTimerValue.ToString();
-        }
+        CheckForWinner();
     }
 
     void CheckForWinner()
     {
         int playerRemaining = 0;
-        foreach (GameObject player in allPlayers)
+        for (int i = 0; i < remainingPlayers.Count; i++)
         {
-            if (player.GetComponent<PlayerController>().IsAlive())
+            if (remainingPlayers[i].GetComponent<PlayerController>().IsAlive())
                 playerRemaining++;
         }
-        if (playerRemaining <= 1 && allPlayers.Length > 1) // >1 player
+        if (playerRemaining <= 1 && allPlayers.Count > 1) // >1 player
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            //restart
+            GetAllPlayers();
+            remainingPlayers = allPlayers;
         }
-        else if (playerRemaining == 0 && allPlayers.Length == 1) // 1 player
+        else if (playerRemaining == 0 && allPlayers.Count == 1) // 1 player
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            //restart
+            GetAllPlayers();
+            remainingPlayers = allPlayers;
         }
 
     }
 
-    void PickNewPenalty()
+    public void RemoveFromTheLiving(GameObject pc)
+    {
+        if (remainingPlayers.Contains(pc))
+        {
+            remainingPlayers.Remove(pc);
+        }
+    }
+
+    public void PickNewPenalty()
     {
         pickedPenalty = penaltyArray[Random.Range(0, penaltyArray.Length)];
     }
 
-    void PickNewRandomPlayer()
+    public void GetAllPlayers()
     {
-        allPlayers = GameObject.FindGameObjectsWithTag("Player");
-        playerWithPenalty = allPlayers[Random.Range(0, allPlayers.Length)];
+        allPlayers = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
+    }
+
+    public GameObject WhoIsCursed()
+    {
+        return playerWithPenalty;
+    }
+
+    public void IGuessImCursed(GameObject me)
+    {
+        playerWithPenalty = me;
+    }
+
+    public void PickNewRandomPlayer()
+    {
+        //for (int i = 0; i < remainingPlayers.Count; i++)
+        //{
+        //    if(!remainingPlayers[i].GetComponent<PlayerController>().IsAlive())
+        //    {
+        //        RemoveFromPlayer(remainingPlayers[i]);
+        //    }
+        //}
+        if (bestPlayer == null)
+        {
+            playerWithPenalty = remainingPlayers[Random.Range(0, remainingPlayers.Count)];
+        }
+        else
+        {
+            playerWithPenalty = bestPlayer;
+        }
     }
 
     public void ResetTimer()
     {
+        PickNewPenalty();
         currentTimerValue = 0;
         readyToPunish = true;
     }
