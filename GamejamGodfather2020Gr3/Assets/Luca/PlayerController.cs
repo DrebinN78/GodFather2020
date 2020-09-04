@@ -249,6 +249,7 @@ public class PlayerController : MonoBehaviour
                 if(GameManager.instance.IsReadyToPunish())
                     GameManager.instance.ResetTimer();
             }
+            AudioManager.instance.Play("Death");
             
         }
 
