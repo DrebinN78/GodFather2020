@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
+    public GameObject tuto;
+
    public void LaunchGame()
    {
        SceneManager.LoadScene(1);
@@ -16,8 +18,13 @@ public class MenuScript : MonoBehaviour
        Application.Quit();
    }
 
-   public void LauchTuto()
+   public void LaunchTuto()
    {
-       SceneManager.LoadScene(2);
+       tuto.SetActive(true);
+   }
+
+   public void CloseTuto()
+   {
+       tuto.SetActive(false);
    }
 }
