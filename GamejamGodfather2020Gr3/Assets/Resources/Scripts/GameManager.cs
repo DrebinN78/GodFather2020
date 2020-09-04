@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     private float currentTimerValue = 0;
     private bool readyToPunish = true;
 
+    private bool spawntimer;    
+
     private List<GameObject> allPlayers;
     private List<GameObject> remainingPlayers;
 
@@ -64,10 +66,16 @@ public class GameManager : MonoBehaviour
         if (currentTimerValue >= timerBtwPenalty)
         {
             pickedPenalty.SetPlayer(playerWithPenalty);
+            if(spawntimer == true){
+                SpawnTimer(playerWithPenalty);
+                spawntimer = false;
+            }
             if (readyToPunish)
             {
+                DeleteTimer(playerWithPenalty);
                 readyToPunish = false;
                 DoPenalty();
+                spawntimer = true;
             }
         }
         //CheckForWinner();
@@ -176,6 +184,18 @@ public class GameManager : MonoBehaviour
         return readyToPunish;
     }
 
+    public void SpawnTimer(GameObject target)
+    {
+        Debug.Log("Timer");
+        GameObject timer = Instantiate(timerGO);
+        timer.transform.parent = target.transform;
+        timer.transform.localPosition = new Vector3(0, 0.75f,10);
+    }
+
+    public void DeleteTimer(GameObject target)
+    {
+        Destroy(target.transform.Find("Timer"));
+    }
     public void DoPenalty()
     {
         GameObject timer = Instantiate(timerGO, FindObjectOfType<Camera>().transform);

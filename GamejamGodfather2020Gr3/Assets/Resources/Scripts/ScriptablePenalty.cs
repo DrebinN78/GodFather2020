@@ -42,7 +42,8 @@ public class ScriptablePenalty : ScriptableObject
         PlayerController pc = player.GetComponent<PlayerController>();
         fxPlayer.transform.parent = pc.transform;
         fx.transform.parent = FindObjectOfType<Camera>().transform;
-        fx.transform.localPosition = new Vector3(fx.transform.localPosition.x, fx.transform.localPosition.y ,fx.transform.localPosition.z +10);
+        fxPlayer.transform.localPosition = new Vector3(0, 0 ,10);
+        fx.transform.localPosition = new Vector3(0, 0 ,10);
         float initJumpForce = pc.jumpForce;
         pc.jumpForce *= valueModifier;
         yield return new WaitForSeconds(effectDuration);
@@ -50,6 +51,7 @@ public class ScriptablePenalty : ScriptableObject
         GameManager.instance.ResetTimer();
         Destroy(fx);
         Destroy(fxPlayer);
+        
     }
 
     public IEnumerator Speed()
@@ -59,7 +61,8 @@ public class ScriptablePenalty : ScriptableObject
         PlayerController pc = player.GetComponent<PlayerController>();
         fxPlayer.transform.parent = pc.transform;
         fx.transform.parent = FindObjectOfType<Camera>().transform;
-        fx.transform.localPosition = new Vector3(fx.transform.localPosition.x, fx.transform.localPosition.y ,fx.transform.localPosition.z +10);
+        fx.transform.localPosition = new Vector3(0, 0 ,10);
+        fxPlayer.transform.localPosition = new Vector3(0, 0 ,10);
         float initSpeed = pc.speed;
         float initDashSpeed = pc.dashSpeed;
         pc.speed *= valueModifier;
@@ -77,7 +80,7 @@ public class ScriptablePenalty : ScriptableObject
         GameObject fx = Instantiate(GameManager.instance.malusFXGOInvisible);
         PlayerController pc = player.GetComponent<PlayerController>();
         fx.transform.parent = FindObjectOfType<Camera>().transform;
-        fx.transform.localPosition = new Vector3(fx.transform.localPosition.x, fx.transform.localPosition.y ,fx.transform.localPosition.z +10);
+        fx.transform.localPosition = new Vector3(0, 0 ,10);
         GameObject go = GameObject.Find("/"+ player.name + "/Player_scale/Player_sprite");
         GameObject go2 = GameObject.Find("/"+ player.name + "/arrow (1)");
         go.SetActive(false);
@@ -101,7 +104,8 @@ public class ScriptablePenalty : ScriptableObject
         PlayerController pc = player.GetComponent<PlayerController>();
         fxPlayer.transform.parent = pc.transform;
         fx.transform.parent = FindObjectOfType<Camera>().transform;
-        fx.transform.localPosition = new Vector3(fx.transform.localPosition.x, fx.transform.localPosition.y ,fx.transform.localPosition.z +10);
+        fx.transform.localPosition = new Vector3(0, 0 ,10);
+        fxPlayer.transform.localPosition = new Vector3(0, 0 ,10);
         float timer = 0;
         while (timer < effectDuration)
         {
@@ -126,7 +130,8 @@ public class ScriptablePenalty : ScriptableObject
         Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
         fxPlayer.transform.parent = rb.transform;
         fx.transform.parent = FindObjectOfType<Camera>().transform;
-        fx.transform.localPosition = new Vector3(fx.transform.localPosition.x, fx.transform.localPosition.y ,fx.transform.localPosition.z +10);
+        fx.transform.localPosition = new Vector3(0, 0 ,10);
+        fxPlayer.transform.localPosition = new Vector3(0, 0 ,10);
         rb.gravityScale = valueModifier;
         yield return new WaitForSeconds(effectDuration);
         rb.gravityScale = 8;
@@ -143,7 +148,8 @@ public class ScriptablePenalty : ScriptableObject
         player.transform.localScale = new Vector3(valueModifier, valueModifier, 1);
         fxPlayer.transform.parent = pc.transform;
         fx.transform.parent = FindObjectOfType<Camera>().transform;
-        fx.transform.localPosition = new Vector3(fx.transform.localPosition.x, fx.transform.localPosition.y ,fx.transform.localPosition.z +10);
+        fx.transform.localPosition = new Vector3(0, 0 ,10);
+        fxPlayer.transform.localPosition = new Vector3(0, 0 ,10);
         yield return new WaitForSeconds(effectDuration);
         player.transform.localScale = new Vector3(1, 1, 1);
         GameManager.instance.ResetTimer();
