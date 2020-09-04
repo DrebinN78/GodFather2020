@@ -6,10 +6,27 @@ public class Blast : MonoBehaviour
 {
     void Awake()
     {
-        Vector3 direction = new Vector3(3.3f,2.9f,0)- transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-        transform.eulerAngles = new Vector3(0,0,angle);
+        
+        
+    }
+
+    void OnTriggerStay2D(Collider2D truc){
+        if(truc.gameObject.tag == "DeathRight"){
+            transform.Rotate(0,180,0);
+        }
+
+        if(truc.gameObject.tag == "DeathUp"){
+            transform.Rotate(0,-90,0);
+        }
+
+        if(truc.gameObject.tag == "DeathLeft"){
+            transform.Rotate(0,0,0);
+        }
+
+        if(truc.gameObject.tag == "DeathDown"){
+            transform.Rotate(0,90,0);
+        }
     }
 
 }
