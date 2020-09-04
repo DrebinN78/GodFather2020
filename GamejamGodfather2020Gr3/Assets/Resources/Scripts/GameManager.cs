@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Debug.Log("on Start : "+bestPlayer);
         GetAllPlayers(); //Getting all player in the scene
         remainingPlayers = allPlayers;
         PickNewRandomPlayer(); //choosing a player to curse
@@ -89,11 +90,18 @@ public class GameManager : MonoBehaviour
         }
         if (playerRemaining <= 1)// && allPlayers.Count > 1) // >1 player
         {
+            //if (remainingPlayers[0] != null)
+            //{
+            //    bestPlayer = remainingPlayers[0];
+            //    Debug.Log(bestPlayer);
+            //}
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            GetAllPlayers();
-            remainingPlayers = allPlayers;
-            PickNewRandomPlayer();
-            ResetTimer();
+            //GetAllPlayers();
+            //remainingPlayers = allPlayers;
+            //PickNewRandomPlayer();
+            //ResetTimer();
+            //Debug.Log("after reload : "+bestPlayer);
+            //playerWithPenalty = bestPlayer;
         }
         //else if (playerRemaining == 0 && allPlayers.Count == 1) // 1 player
         //{
