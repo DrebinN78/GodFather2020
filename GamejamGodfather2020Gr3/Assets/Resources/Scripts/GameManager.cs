@@ -23,6 +23,14 @@ public class GameManager : MonoBehaviour
     private List<GameObject> remainingPlayers;
 
     public GameObject timerGO;
+    public GameObject malusFXGOAutoJump;
+    public GameObject malusFXGOGiant;
+    public GameObject malusFXGOGravity;
+    public GameObject malusFXGOInvisible;
+    public GameObject malusFXGOPlayer;
+    public GameObject malusFXGOPlume;
+    public GameObject malusFXGOSlide;
+    public GameObject malusFXGOSpeed;
 
     public static GameManager instance = null;
     private void Awake()
