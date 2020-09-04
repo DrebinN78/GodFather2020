@@ -15,4 +15,9 @@ public class MenuScript : MonoBehaviour
    {
        Application.Quit();
    }
+
+   public void LauchTuto()
+   {
+       SceneManager.LoadScene(2);
+   }
 }

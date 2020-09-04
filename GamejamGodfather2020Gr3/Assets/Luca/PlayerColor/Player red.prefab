@@ -15560,7 +15560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b29958394615d048b9291abab1d3e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  col: {fileID: 0}
+  col: {fileID: 1104634870090576033}
   anim: {fileID: 1104634870090576032}
   speed: 7
   jumpForce: 20
@@ -15577,6 +15577,9 @@ MonoBehaviour:
   direction: 0
   dashSpeed: 40
   startDashTime: 0.1
+  BumpMultiplier: 5
+  SquishDuration: 0.5
+  SquishValue: 0.9
   arrow: {fileID: 3619318656586624110}
   dashCoolDown: 0
   startDashCoolDown: 0.5
@@ -15585,6 +15588,7 @@ MonoBehaviour:
   dash: {fileID: 1104634869178330114}
   run: {fileID: 1104634870079976081}
   blast: {fileID: 5983515761940311687, guid: 4019430be8308a54ba285c712d4d5dbf, type: 3}
+  contact: {fileID: 7313028277170271790, guid: 88425ee738509f844b0da993cc4d9acf, type: 3}
   mmc:
     m_Mode: 0
     m_CurveMultiplier: 0
@@ -15602,7 +15606,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_ConstantMin: 0
     m_ConstantMax: 0
-  playerID: 0
+  playerID: 1
 --- !u!1 &1104634870136366574
 GameObject:
   m_ObjectHideFlags: 0

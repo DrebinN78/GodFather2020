@@ -15188,7 +15188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SpriteMesh: {fileID: 11400000, guid: 74376094868dacf4b8bc69980d559366, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.49411762, b: 0.9978379, a: 1}
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: -2107743381
@@ -15295,7 +15295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SpriteMesh: {fileID: 11400000, guid: 2b0c83c85f68bc346a41ace769aa34fe, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.49411762, b: 0.9978379, a: 1}
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: -2107743381
@@ -20336,6 +20336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b29958394615d048b9291abab1d3e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  col: {fileID: 5007913531254540549}
   anim: {fileID: 5007913531254540548}
   speed: 7
   jumpForce: 20
@@ -20352,6 +20353,9 @@ MonoBehaviour:
   direction: 0
   dashSpeed: 40
   startDashTime: 0.1
+  BumpMultiplier: 0
+  SquishDuration: 0
+  SquishValue: 0
   arrow: {fileID: 8651901389901174218}
   dashCoolDown: 0
   startDashCoolDown: 0.5
@@ -20360,6 +20364,10 @@ MonoBehaviour:
   dash: {fileID: 5007913529805428134}
   run: {fileID: 5007913531311311669}
   blast: {fileID: 5983515761940311687, guid: 4019430be8308a54ba285c712d4d5dbf, type: 3}
+  blast2: {fileID: 0}
+  blast3: {fileID: 0}
+  blast4: {fileID: 0}
+  contact: {fileID: 0}
   mmc:
     m_Mode: 0
     m_CurveMultiplier: 0
@@ -25329,7 +25337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SpriteMesh: {fileID: 11400000, guid: 2b0c83c85f68bc346a41ace769aa34fe, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.49411762, b: 0.9978379, a: 1}
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: -2107743381
@@ -30449,7 +30457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SpriteMesh: {fileID: 11400000, guid: 63819cdf343af4a4eac650755c3509a5, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.49411762, b: 0.9978379, a: 1}
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: -2107743381
