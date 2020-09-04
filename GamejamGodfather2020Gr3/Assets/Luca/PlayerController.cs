@@ -219,6 +219,7 @@ public class PlayerController : MonoBehaviour
                 if(GameManager.instance.IsReadyToPunish())
                     GameManager.instance.ResetTimer();
             }
+            AudioManager.instance.Play("Death");
         }
 
         if (truc.gameObject.tag == "DeathUp"){  
@@ -226,6 +227,13 @@ public class PlayerController : MonoBehaviour
             Instantiate(blast2, transform.position, Quaternion.identity);
             transform.position = new Vector3(-10,-10,-10);
             isAlive = false;
+            GameManager.instance.RemoveFromTheLiving(this.gameObject);
+            if (gameObject == GameManager.instance.WhoIsCursed())
+            {
+                GameManager.instance.PickNewRandomPlayer();
+                if(GameManager.instance.IsReadyToPunish())
+                    GameManager.instance.ResetTimer();
+            }
             AudioManager.instance.Play("Death");
         }
 
@@ -234,7 +242,14 @@ public class PlayerController : MonoBehaviour
             Instantiate(blast3, transform.position, Quaternion.identity);
             transform.position = new Vector3(-10,-10,-10);
             isAlive = false;
-            AudioManager.instance.Play("Death");
+            GameManager.instance.RemoveFromTheLiving(this.gameObject);
+            if (gameObject == GameManager.instance.WhoIsCursed())
+            {
+                GameManager.instance.PickNewRandomPlayer();
+                if(GameManager.instance.IsReadyToPunish())
+                    GameManager.instance.ResetTimer();
+            }
+            
         }
 
         if (truc.gameObject.tag == "DeathDown"){  
@@ -242,6 +257,13 @@ public class PlayerController : MonoBehaviour
             Instantiate(blast4, transform.position, Quaternion.identity);
             transform.position = new Vector3(-10,-10,-10);
             isAlive = false;
+            GameManager.instance.RemoveFromTheLiving(this.gameObject);
+            if (gameObject == GameManager.instance.WhoIsCursed())
+            {
+                GameManager.instance.PickNewRandomPlayer();
+                if(GameManager.instance.IsReadyToPunish())
+                    GameManager.instance.ResetTimer();
+            }
             AudioManager.instance.Play("Death");
         }
     }
