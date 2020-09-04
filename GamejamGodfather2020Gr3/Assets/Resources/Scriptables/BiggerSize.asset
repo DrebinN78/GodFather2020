@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BiggerSize
   m_EditorClassIdentifier: 
   effectType: 6
-  valueModifier: 2
+  valueModifier: 1.5
   effectDuration: 3
