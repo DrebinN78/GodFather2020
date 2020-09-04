@@ -67,20 +67,28 @@ public class GameManager : MonoBehaviour
         int playerRemaining = 0;
         for (int i = 0; i < remainingPlayers.Count; i++)
         {
-            if (remainingPlayers[i].GetComponent<PlayerController>().IsAlive())
+            PlayerController temppc = remainingPlayers[i].GetComponent<PlayerController>();
+            if (temppc != null && temppc.IsAlive())
+            {
                 playerRemaining++;
+                temppc = null;
+            }
         }
         if (playerRemaining <= 1 && allPlayers.Count > 1) // >1 player
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             GetAllPlayers();
             remainingPlayers = allPlayers;
+            PickNewRandomPlayer();
+            ResetTimer();
         }
         else if (playerRemaining == 0 && allPlayers.Count == 1) // 1 player
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             GetAllPlayers();
             remainingPlayers = allPlayers;
+            PickNewRandomPlayer();
+            ResetTimer();
         }
 
     }
