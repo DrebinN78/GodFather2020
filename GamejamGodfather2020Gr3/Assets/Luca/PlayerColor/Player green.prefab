@@ -9974,7 +9974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 0, g: 1, b: 0.9898968, a: 1}
-  m_Length: 0.42000046
+  m_Length: 0.42000058
   m_ChildTransform: {fileID: 5502951170208107067}
   m_AttachedIK: {fileID: 0}
 --- !u!1 &5502951168479053636
@@ -15189,7 +15189,7 @@ GameObject:
   - component: {fileID: 5502951169137500411}
   - component: {fileID: 5502951169137500410}
   - component: {fileID: 5502951169137500409}
-  - component: {fileID: 5502951169137500408}
+  - component: {fileID: 4080695286964079741}
   - component: {fileID: 8156155562186737418}
   - component: {fileID: 8156155562186737461}
   m_Layer: 9
@@ -15286,8 +15286,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &5502951169137500408
-BoxCollider2D:
+--- !u!70 &4080695286964079741
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -15295,23 +15295,13 @@ BoxCollider2D:
   m_GameObject: {fileID: 5502951169137500412}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 51c02685b30da6f4dbcb167172c31e63, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0030875802, y: -0.16364342}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.38, y: 0.39}
-    newSize: {x: 0.3, y: 0.27}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.88636863, y: 1.2051296}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0, y: -0.21}
+  m_Size: {x: 0.91, y: 1.16}
+  m_Direction: 0
 --- !u!50 &8156155562186737418
 Rigidbody2D:
   serializedVersion: 4
@@ -15345,7 +15335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b29958394615d048b9291abab1d3e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  col: {fileID: 5502951169137500408}
+  col: {fileID: 4080695286964079741}
   anim: {fileID: 5502951169137500409}
   speed: 7
   jumpForce: 20
@@ -15373,6 +15363,9 @@ MonoBehaviour:
   dash: {fileID: 5502951170087500891}
   run: {fileID: 5502951169177199304}
   blast: {fileID: 5983515761940311687, guid: 4019430be8308a54ba285c712d4d5dbf, type: 3}
+  blast2: {fileID: 0}
+  blast3: {fileID: 0}
+  blast4: {fileID: 0}
   contact: {fileID: 7313028277170271790, guid: 88425ee738509f844b0da993cc4d9acf, type: 3}
   mmc:
     m_Mode: 0
@@ -25432,7 +25425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Length: 0.85083675
+  m_Length: 0.850837
   m_ChildTransform: {fileID: 5502951169119331333}
   m_AttachedIK: {fileID: 0}
 --- !u!1 &5502951170163379868

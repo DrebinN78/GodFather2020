@@ -222,21 +222,12 @@ PrefabInstance:
       propertyPath: playerID
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3619318655708780396, guid: 232bf205006b05245b8abf9687261398, type: 3}
-      propertyPath: col
-      value: 
-      objectReference: {fileID: 34596111}
     - target: {fileID: 3619318656586624109, guid: 232bf205006b05245b8abf9687261398, type: 3}
       propertyPath: playerID
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 232bf205006b05245b8abf9687261398, type: 3}
---- !u!61 &34596111 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 1104634870090576033, guid: 232bf205006b05245b8abf9687261398, type: 3}
-  m_PrefabInstance: {fileID: 34596110}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &43067604 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4233730982035255448, guid: 91c5ef259f7835a45979a00911dbc9e4, type: 3}
@@ -10935,10 +10926,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 441123085349451796, guid: 01abdbe30a5237b44a59478a0f0db14c, type: 3}
-      propertyPath: col
-      value: 
-      objectReference: {fileID: 1384333925}
     - target: {fileID: 4283270347822844564, guid: 01abdbe30a5237b44a59478a0f0db14c, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -11011,7 +10998,9 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4283270348114173913, guid: 01abdbe30a5237b44a59478a0f0db14c, type: 3}
+    - {fileID: 3213581321554340291, guid: 01abdbe30a5237b44a59478a0f0db14c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 01abdbe30a5237b44a59478a0f0db14c, type: 3}
 --- !u!1 &972579198
 GameObject:
@@ -15986,7 +15975,8 @@ PrefabInstance:
       propertyPath: blast
       value: 
       objectReference: {fileID: 3551158812722236954, guid: cc139337a9b42e64f934abd7982b4f7e, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5502951169137500408, guid: 96abcb431571f804f9f891ebb7b976eb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 96abcb431571f804f9f891ebb7b976eb, type: 3}
 --- !u!1001 &1123766220
 PrefabInstance:
@@ -16179,11 +16169,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e671f1ba6ac71a4a84aa4271e5bc257, type: 3}
---- !u!61 &1384333925 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 4283270348114173913, guid: 01abdbe30a5237b44a59478a0f0db14c, type: 3}
-  m_PrefabInstance: {fileID: 944404391}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1423622871
 GameObject:
   m_ObjectHideFlags: 0

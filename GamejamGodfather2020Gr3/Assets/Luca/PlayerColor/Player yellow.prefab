@@ -5060,7 +5060,7 @@ GameObject:
   - component: {fileID: 4283270348114173914}
   - component: {fileID: 4283270348114173915}
   - component: {fileID: 4283270348114173912}
-  - component: {fileID: 4283270348114173913}
+  - component: {fileID: 4247599185834586662}
   - component: {fileID: 441123085349451819}
   - component: {fileID: 441123085349451796}
   m_Layer: 9
@@ -5157,8 +5157,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &4283270348114173913
-BoxCollider2D:
+--- !u!70 &4247599185834586662
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5166,23 +5166,13 @@ BoxCollider2D:
   m_GameObject: {fileID: 4283270348114173917}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 51c02685b30da6f4dbcb167172c31e63, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0030875802, y: -0.16364342}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.38, y: 0.39}
-    newSize: {x: 0.3, y: 0.27}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.88636863, y: 1.2051296}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0, y: -0.21}
+  m_Size: {x: 0.91, y: 1.16}
+  m_Direction: 0
 --- !u!50 &441123085349451819
 Rigidbody2D:
   serializedVersion: 4
@@ -5216,7 +5206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b29958394615d048b9291abab1d3e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  col: {fileID: 0}
+  col: {fileID: 4247599185834586662}
   anim: {fileID: 4283270348114173912}
   speed: 7
   jumpForce: 20
@@ -5243,7 +5233,10 @@ MonoBehaviour:
   ground: {fileID: 4283270349309460088}
   dash: {fileID: 4283270348812534650}
   run: {fileID: 4283270348170681833}
-  blast: {fileID: 5983515761940311687, guid: 4019430be8308a54ba285c712d4d5dbf, type: 3}
+  blast: {fileID: 7985699413534332807, guid: 42c6ce3d8a495e547872b25fe56bfc5a, type: 3}
+  blast2: {fileID: 5572713961919358708, guid: 6f6912890b7b9ff469671890e11ed1cf, type: 3}
+  blast3: {fileID: 221235345566874899, guid: ab1f968ed82a0604eacd0a0a5f5afc65, type: 3}
+  blast4: {fileID: 5138601380569619179, guid: 3a4d00aaace505441b81f1f192661195, type: 3}
   contact: {fileID: 7313028277170271790, guid: 88425ee738509f844b0da993cc4d9acf, type: 3}
   mmc:
     m_Mode: 0
@@ -15239,7 +15232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 0, g: 1, b: 0.9898968, a: 1}
-  m_Length: 0.42000058
+  m_Length: 0.42000043
   m_ChildTransform: {fileID: 4283270349184759066}
   m_AttachedIK: {fileID: 0}
 --- !u!1 &4283270348415925256
@@ -20733,7 +20726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Length: 0.850837
+  m_Length: 0.85083675
   m_ChildTransform: {fileID: 4283270348228549412}
   m_AttachedIK: {fileID: 0}
 --- !u!1 &4283270349273264573
